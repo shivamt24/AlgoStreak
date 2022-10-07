@@ -16,13 +16,9 @@ var isSubsequence = function(s, t) {
         while( index < s.length ){
             if( s[index] === t[i] ){
                 index ++;
-                i++;
                 if( index === s.length){
                     return true;
-                } else if( i === t.length ){
-                          return false;
-                          }
-                continue;
+                }
             }
             i++;
             if( i === t.length){
