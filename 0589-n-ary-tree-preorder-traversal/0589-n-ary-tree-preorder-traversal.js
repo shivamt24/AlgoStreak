@@ -11,19 +11,21 @@
  * @return {number[]}
  */
 var preorder = function(root) {
+    let nodeStack = [root];
     let sol = [];
-    preOrderHelper(root, sol);
+    
+    if(root == null){
+        return [];
+    }
+    
+    while( nodeStack.length > 0 ){
+        //console.log(nodeStack);
+        let node = nodeStack.pop();
+        sol.push(node.val);
+        for(let i = node.children.length - 1; i > -1 ; i--){
+            console.log(node.children[i].val);
+            nodeStack.push(node.children[i]);
+        }
+    }
     return sol;
 };
-
-
-var preOrderHelper = function (node, sol) {
-    //console.log(node.val);
-    if( node === null || node.children === null ){
-        return;
-    }
-    sol.push(node.val);
-    for( let i = 0; i < node.children.length; i++){
-        preOrderHelper( node.children[i], sol );
-    }
-}
