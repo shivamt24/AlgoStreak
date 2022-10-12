@@ -11,31 +11,36 @@
  * @return {number[][]}
  */
 var levelOrder = function(root) {
-    let map = new Map(); 
-    let level = 0;
     let sol = [];
-    levelHelper(root,level, map);
-    for(let i of map){
-        sol.push(i[1]);
+    if(root == null){
+        return [];
     }
-    console.log(sol);
-    return sol;
-    //console.log(map);
-};
+    let nodeQueue = [root];
+    let level = 0;
+    while(nodeQueue.length > 0){
+        let level_length = nodeQueue.length;
+        
+        for(let i = 0; i < level_length; i++){
+            let node  = nodeQueue.shift();
+            if(node !== null && node.val !== null){
+                if(sol[level] === null || sol[level]===undefined){
+                    sol[level] = [node.val];
+                } else {
+                    sol[level].push(node.val);
+                }       
+            }
+            
+            if(node.left !== null){
+                nodeQueue.push(node.left);    
+            }
+            if(node.right !== null){
+                nodeQueue.push(node.right);   
+            }   
+        }
 
-var levelHelper = function(node, level, map){
-    if( node === null || node.children === null ){
-        return;
+        level += 1;
+        
     }
-    if(map.has(level)){
-        (map.get(level)).push(node.val);
-        //map.set( level , nodeVal);
-    } else {
-        map.set(level, [node.val]);
-    }
-    level ++;
-    
-    levelHelper(node.left, level, map);
-    levelHelper(node.right, level, map);
-    
+    return sol;
+
 }
