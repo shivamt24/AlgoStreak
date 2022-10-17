@@ -18,17 +18,13 @@ var lowestCommonAncestor = function(root, p, q) {
     
 };
 
-let lca = (node, p ,q)=>{
-    //let pVal = p;
-    //let qVal = q;
-        if( p.val > node.val && q.val > node.val){
-            return lca(node.right, p , q);
-        }
-        else if( p.val < node.val && q.val < node.val){
-            return lca(node.left, p, q);
-        }
-        else {
-            return node;
-        }
-
+let lca = (node, p , q) => {
+    if(node === null) return false;
+    
+    if(node.val > p.val && node.val > q.val){
+        return lca(node.left, p , q);
+    } else if( node.val < p.val && node.val < q.val){
+        return lca(node.right, p , q);
+    }
+    return node;
 }
