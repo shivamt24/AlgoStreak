@@ -16,9 +16,33 @@ var lowestCommonAncestor = function(root, p, q) {
     
     return lcaHelper(root,p,q);
     
-}; 
-//Recursive
+};
+//iterative
+let lcaHelper = (root,p,q) => {
+    
+    let node = root;
+    
+    while(node !== null){
+        
+        if( node.val > p.val && node.val >q.val ){
+            node = node.left;
+        } else if( node.val < p.val && node.val < q.val ){
+            node = node.right;
+        }else{
+            return node;
+        }
+    
+    }
+    
+    
+}
 
+
+
+
+
+//Recursive
+/*
 let lcaHelper = (node,p,q) => {
     //if(node === null) return;
     
@@ -32,7 +56,7 @@ let lcaHelper = (node,p,q) => {
     
     else {
         return node;
-    } 
-    
+    }   
 }
+*/
 
