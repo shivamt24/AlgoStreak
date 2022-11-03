@@ -29,9 +29,9 @@ var findAnagrams = function(s, p) {
             let removeHead = s.charCodeAt( i - p.length );
             sArr[removeHead - 97]--;
         }
-        if( i >= p.length - 1){
+
             if( isArrayEqual(pArr, sArr) ) sol.push( i - p.length +1 );
-        }
+        
 
            
     }
