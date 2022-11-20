@@ -3,6 +3,10 @@
  * @param {number} k
  * @return {number}
  */
+
+/*Sliding window slow technique*/
+//TODO: Sliding window fast technique
+    //Dont create a set, rather keep count of all the chars in the array and compare the length with the max count from the chars in the array
 var characterReplacement = function(s, k) {
      
     function isValid (start, end, count){
